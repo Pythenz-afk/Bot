@@ -1,1 +1,1 @@
-# Bot
+bash run.sh

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Renewed Lore</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <h1>Renewed Lore</h1>
+        <div class="actions" style="display: flex; gap: 8px; align-items: center;">
+          <button type="button" id="change-credentials" class="theme-toggle" aria-label="Change token or webhook">🔑</button>
+          <button type="button" id="toggle-logs" class="theme-toggle" aria-label="Show logs">📋</button>
+          <button type="button" id="toggle-dark-mode" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </div>
+      </div>
+
+      <div id="logs-modal" class="logs-modal" style="display: none;">
+        <div class="logs-content">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="margin: 0;">Console Logs</h3>
+            <button type="button" id="close-logs" class="logs-close">✕</button>
+          </div>
+          <div id="logs-output" class="logs-output"></div>
+          <button type="button" id="clear-logs" style="margin-top: 12px;">Clear Logs</button>
+        </div>
+      </div>
+
+      <div id="startup-modal" class="startup-modal">
+        <div class="startup-content">
+          <h2>Welcome</h2>
+          <p>Please enter either a Bot Token or a Webhook URL to start.</p>
+          <label for="startup_bot_token">Bot Token</label>
+          <input id="startup_bot_token" placeholder="Bot token (careful!)" />
+          <label for="startup_webhook_url">Webhook URL</label>
+          <input id="startup_webhook_url" placeholder="https://discord.com/api/webhooks/..." />
+          <div class="startup-buttons">
+            <button type="button" id="startup_continue">Continue</button>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" id="bot_token_full" value="{{ discord_token }}" />
+
+      <section class="panel">
+        <h2>Servers</h2>
+        <div id="servers_container" style="margin:8px 0 12px;"></div>
+        <label>Channels</label>
+        <select id="channel_select">
+          <option value="">Choose a channel after refreshing</option>
+        </select>
+      </section>
+
+      <section class="panel">
+        <label>Content</label>
+        <textarea id="content" placeholder="Message content..."></textarea>
+      </section>
+
+      <section class="panel">
+        <h2>Embeds</h2>
+        <div id="embeds"></div>
+        <button id="add-embed">Add Embed</button>
+      </section>
+
+      <section class="panel">
+        <h2>Actions</h2>
+        <div class="action-grid">
+          <button type="button" id="refresh-channels">Refresh Channels</button>
+          <button id="fetch-messages" type="button">Fetch Messages</button>
+          <button id="send">Send</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Preview / JSON</h2>
+        <pre id="json_preview">{}</pre>
+      </section>
+
+      <section class="panel">
+        <h2>Emoji Picker</h2>
+        <div id="emoji-picker"></div>
+        <div id="server-emoji-picker" style="margin-top: 12px;"></div>
+        <div style="margin-top:8px; display:flex; gap:8px; align-items:center;">
+          <input id="custom-emoji" placeholder=":custom_name:id or Unicode emoji" />
+          <button id="insert-custom-emoji" type="button">Insert</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Messages</h2>
+        <div id="messages"></div>
+      </section>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+  </html>
